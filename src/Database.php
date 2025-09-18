@@ -15,4 +15,7 @@ class Database {
         $stmt->execute($params);
         return $stmt;
     }
+    public function lastInsertId(): string {
+        return $this->pdo->lastInsertId();
+    }
 }
