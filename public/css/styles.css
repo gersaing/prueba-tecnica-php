@@ -1,0 +1,227 @@
+/*  Variables base */
+:root {
+  --bg: #f6f7fb;
+  --card-bg: #fff;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+  --primary: #2563eb;
+  --primary-600: #1d4ed8;
+  --danger: #dc2626;
+  --radius: 10px;
+  --shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", Arial;
+  font-size: 15px;
+  line-height: 1.5;
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* Contenedor y títulos  */
+.container {
+  max-width: 1000px;
+  margin: 24px auto;
+  padding: 0 16px;
+}
+
+.page-title {
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin: 0;
+}
+
+.page-subtitle {
+  margin: 2px 0 14px;
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+/* Tarjetas y toolbar */
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 12px;
+}
+
+.list-toolbar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 12px;
+}
+
+/*Botones  */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 14px;
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: 0.9rem;
+  border: 1px solid transparent;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background .15s ease, border-color .15s ease, color .15s ease;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: #fff;
+}
+.btn-primary:hover {
+  background: var(--primary-600);
+}
+
+.btn-outline {
+  background: #fff;
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+.btn-outline:hover {
+  background: #f3f4f6;
+}
+
+.btn-danger {
+  background: var(--danger);
+  color: #fff;
+}
+.btn-danger:hover {
+  filter: brightness(.9);
+}
+
+/* Tabla compacta */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.93rem;
+}
+
+.table thead {
+  background: #f3f4f6;
+}
+
+.table th,
+.table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  vertical-align: middle;
+}
+
+.table tbody tr:nth-child(even) {
+  background: #fafafa;
+}
+.table tbody tr:hover {
+  background: #f1f5f9;
+}
+
+/* columnas de acción */
+.col-action {
+  width: 80px;
+  text-align: center;
+}
+
+/* Botones de icono (editar/eliminar)  */
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 30px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: #fff;
+  transition: background .15s ease, border-color .15s ease, transform .06s ease;
+}
+.icon-btn:hover {
+  background: #f3f4f6;
+}
+.icon-btn:active {
+  transform: translateY(1px);
+}
+.icon-btn .icon {
+  width: 18px;
+  height: 18px;
+  fill: #374151;
+}
+.icon-btn.danger .icon {
+  fill: var(--danger);
+}
+
+/* Alertas (mensajes flash) */
+.alert {
+  border-radius: var(--radius);
+  padding: 10px 14px;
+  border: 1px solid transparent;
+  margin-bottom: 14px;
+  font-size: 0.9rem;
+}
+.alert-success {
+  background: #ecfdf5;
+  border-color: #a7f3d0;
+  color: #065f46;
+}
+.alert-danger {
+  background: #fef2f2;
+  border-color: #fecaca;
+  color: #7f1d1d;
+}
+
+/*Formularios (para crear/editar)  */
+.form-group {
+  margin-bottom: 14px;
+}
+label {
+  font-weight: 600;
+  margin-bottom: 4px;
+  display: block;
+}
+input[type="text"],
+input[type="email"],
+select,
+textarea {
+  width: 100%;
+  padding: 9px 11px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+  background: #fff;
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+textarea { resize: vertical; min-height: 90px; }
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+  outline: none;
+}
+
+.inline-group {
+  display: flex;
+  gap: 16px;
+}
+.form-check {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: normal;
+}
+
+/* Banner*/
+.alert { border-radius: 10px; padding: 10px 14px; border:1px solid transparent; margin-bottom:14px; }
+.alert-info { background:#eff6ff; border-color:#bfdbfe; color:#1e3a8a; }
+
+/* Mostrar inputs inválidos solo después de intentar enviar */
+.was-validated :invalid {
+  border-color: #dc2626 !important;
+  box-shadow: 0 0 0 3px rgba(220,38,38,.12) !important;
+}
