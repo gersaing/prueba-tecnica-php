@@ -8,7 +8,10 @@ Editor: VS Code + extensión **PHP Intelephense**
 
 Copia o clona el proyecto en C:\xampp\htdocs\prueba-tecnica-php
 ejecuta este comando para la creacion de la base de datos
-C:\xampp\mysql\bin\mysql -u root -p < C:\xampp\htdocs\prueba-tecnica-php\migrations\001_schema.sql
+
+C:\xampp\mysql\bin\mysql -u root -p --default-character-set=utf8mb4 < C:\xampp\htdocs\prueba-tecnica-php\migrations\001_schema.sql
+
+
 ejecuta en cmd
 php -S localhost:8000
 Navega a: http://localhost/prueba-tecnica-php/public/index.php?action=create
