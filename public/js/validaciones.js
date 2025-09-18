@@ -1,5 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
   const banner = document.getElementById('campos-obligatorios');
+
+  const form =
+    document.getElementById('form-empleado') ||      // create
+    document.getElementById('form-empleado-edit') || // update
+    document.getElementById('form');          
+
   if (!form || !banner) return;
 
   const toInfo  = () => { banner.classList.remove('alert-danger'); banner.classList.add('alert','alert-info'); banner.textContent = 'Los campos con asteriscos (*) son obligatorios'; };

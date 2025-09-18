@@ -156,4 +156,53 @@ class Empleado {
                 JOIN areas a ON e.area_id = a.id";
         return $this->db->run($sql)->fetchAll();
     }
+
+    /**
+     * Rellena propiedades del modelo desde un array asociativo.
+     * Llama setters si existen, si no, asigna propiedad pública/privada vía map.
+     */
+    public function cargarCampos(array $data, array $allowed = []): self {
+        // Si no pasas $allowed, toma un allow-list por defecto
+        if (empty($allowed)) {
+            $allowed = ['nombre','email','sexo','area_id','boletin','descripcion'];
+        }
+
+        foreach ($allowed as $key) {
+            if (!array_key_exists($key, $data)) {
+                continue; // partial update: no tocar
+            }
+            $value = $data[$key];
+
+            // Map opcional: nombre_de_campo => nombreDelSetter/prop
+            $map = [
+                'nombre'      => 'Nombre',
+                'email'       => 'Email',
+                'sexo'        => 'Sexo',
+                'area_id'     => 'AreaId',
+                'boletin'     => 'Boletin',
+                'descripcion' => 'Descripcion',
+            ];
+
+            if (isset($map[$key])) {
+                $setter = 'set' . $map[$key];
+                if (method_exists($this, $setter)) {
+                    $this->{$setter}($value);
+                    continue;
+                }
+            }
+
+            // Fallback si prefieres asignar propiedades directas
+            if (property_exists($this, $key)) {
+                $this->{$key} = $value;
+            }
+        }
+        return $this;
+    }
+
+    /** Atajo para construir y cargar de una */
+    public static function fromArray(Database $db, array $data): self {
+        $e = new self($db);
+        return $e->cargarCampos($data);
+    }
+
 }
